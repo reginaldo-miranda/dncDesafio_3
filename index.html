@@ -17,9 +17,10 @@
                     id="description"
                     name="description"
                     class="input-description"
-                    aria-label="Qual a tarefa que deseja cadastrar ?"
-                    placeholder="Qual a tarefa que deseja cadastrar ?"
+                    aria-label="Nome da tarefa"
+                    placeholder="Nome da tarefa"
                     />
+                    <input type="text" id="etiqueta" class="input-description" placeholder="Etiqueta"/>
                     <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="add-task-btn">+</button>
             </form>
 
@@ -28,8 +29,8 @@
             <ul id="todo-list"></ul>
         </section>
         <footer id="todo-footer">
-            <button onclick="removeDoneTasks()" class="remove-done-tasks-btn">
-                Remover tarefas concluidas
+        <!--   <button onclick="removeDoneTasks()" class="remove-done-tasks-btn"> -->
+                Tarefas concluidas
             </button>
         </footer>
     </main>

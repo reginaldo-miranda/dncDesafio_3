@@ -1,5 +1,10 @@
 const renderTasksProgressData = (tasks) => {
     let tasksProgress;
+
+    /*now = new Date;
+    document.write("Hoje é " + now.getDay() + ", " + now.getDate() + " de " + now.getMonth() + " de " + now.getFullYear());
+*/
+
     const tasksProgressDOM = document.getElementById('tasks-progress');
     if (tasksProgressDOM) tasksProgress = tasksProgressDOM;
     else {
@@ -55,6 +60,7 @@ const createTaskListItem = (task, checkbox) => {
 
   
     const toDo = document.createElement('li');
+  
 
     const removeTaskButton = document.createElement("button");
 
@@ -163,7 +169,8 @@ window.onload = function() {
         const checkbox = getCheckboxImput(task);
        
         createTaskListItem(task, checkbox);
-      
+    
+        
     })
     renderTasksProgressData(tasks)
 }

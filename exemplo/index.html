@@ -9,8 +9,8 @@
 </head>
 <body>
     <main>
-        <h1>Lista de Tarefas</h1>
-        <section id="create-todo-section">
+        <h1 style="text-align: center;">Lista de Tarefas</h1>
+        <section id="create-todo-section" style="text-align: center;">
             <form id="create-todo-form">
                 <input 
                     type="text" 
@@ -19,12 +19,13 @@
                     class="input-description"
                     aria-label="Qual a tarefa que deseja cadastrar ?"
                     placeholder="Qual a tarefa que deseja cadastrar ?"
+                    style="width: 80%;"
                     />
-                    <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="add-task-btn">+</button>
+                    <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="add-task-btn" style="width: 80%;">+</button>
             </form>
 
         </section>
-        <section class="todo-list-section">
+        <section class="todo-list-section" style="max-width: 100%;">
             <ul id="todo-list"></ul>
         </section>
         <footer id="todo-footer">

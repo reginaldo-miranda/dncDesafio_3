@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de tarefas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
     <script src="./index.js"></script>
 </head>
 <body>
@@ -18,11 +20,11 @@
                     name="description"
                     class="input-description"
                     aria-label="Nome da tarefa"
-                    placeholder="Nome da tarefa"
-                    style="width: 80%;"
-                    />
-                    <input type="text" id="etiqueta" class="input-description" placeholder="Etiqueta" style="width: 80%;"/>
-                    <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="add-task-btn" style="width: 80%;">+</button>
+                    placeholder="Nome da tarefa;"
+                     />
+                    <input type="text" id="etiqueta" class="input-description" placeholder="Etiqueta" /> 
+                    <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="add-task-btn">Incluir</button>
+
                 </form>
 
         </section>
@@ -30,8 +32,8 @@
             <ul id="todo-list"></ul>
         </section>
         <footer id="todo-footer">
-        <!--   <button onclick="removeDoneTasks()" class="remove-done-tasks-btn"> -->
-                Tarefas concluidas
+            <button onclick="removeDoneTasks()" class="remove-done-tasks-btn">
+                Remover Tarefas Concluídas
             </button>
         </footer>
     </main>

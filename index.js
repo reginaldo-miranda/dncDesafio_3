@@ -11,7 +11,8 @@ const renderTasksProgressData = (tasks) => {
     }
     const doneTasks = tasks.filter(({ checked}) => checked).length
     const totalTasks = tasks.length;
-    tasksProgress.textContent = `${doneTasks}/${totalTasks} concluidas`
+    tasksProgress.textContent = `${doneTasks} concluidas`
+ //   tasksProgress.textContent = `${totalTasks} concluidas`
 }
 
 const getTasksFromLocalStorage = () => {
@@ -41,9 +42,14 @@ const createTaskListItem = (task) => {
     buttonContainer.className = 'button-container';
 
     const removeTaskButton = document.createElement("button");
-    removeTaskButton.className = 'remove-task-btn';
+    removeTaskButton.className = 'concluir-btn';
     removeTaskButton.ariaLabel = 'Concluir tarefa';
     removeTaskButton.textContent = 'Concluir';
+    removeTaskButton.style.display = 'flex';
+    removeTaskButton.style.alignItems = 'center';
+    removeTaskButton.style.justifyContent = 'center';
+
+
 
 
     removeTaskButton.onclick = () => {
@@ -51,12 +57,32 @@ const createTaskListItem = (task) => {
         if (taskElement) {
             taskElement.classList.toggle('task-concluida');
             removeTaskButton.classList.toggle('concluido');
+            // Remove text content when toggling to concluido state
+            if (removeTaskButton.classList.contains('concluido')) {
+                removeTaskButton.innerHTML = '✓';
+                removeTaskButton.style.fontSize = '1.5rem';
+                removeTaskButton.style.fontWeight = 'bold';
+            } else {
+                removeTaskButton.textContent = 'Concluir';
+                removeTaskButton.style.fontSize = '1.4rem';
+                removeTaskButton.style.fontWeight = 'normal';
+            }
+
+
+
             const description = taskElement.querySelector('.task-description');
             if (description) {
                 description.classList.toggle('text-taxado');
             }
+            // Update task status in localStorage
+            const tasks = getTasksFromLocalStorage();
+            const updatedTasks = tasks.map(t => 
+                t.id === task.id ? { ...t, done: !t.done } : t
+            );
+            setTasksInLocalStorage(updatedTasks);
         }
     };
+
 
     buttonContainer.appendChild(removeTaskButton);
 
@@ -135,21 +161,26 @@ window.onload = function() {
  
     const tasks = getTasksFromLocalStorage();
     tasks.forEach((task) => {
-        createTaskListItem(task);
+        const taskElement = createTaskListItem(task);
         if (task.done) {
-            const taskElement = document.getElementById(task.id);
-            if (taskElement) {
-                taskElement.classList.add('task-concluida');
-                const button = taskElement.querySelector('.remove-task-btn');
-                if (button) {
-                    button.classList.add('concluido');
-                }
-                const description = taskElement.querySelector('.task-description');
-                if (description) {
-                    description.classList.add('text-taxado');
-                }
+            taskElement.classList.add('task-concluida');
+            const button = taskElement.querySelector('.concluir-btn');
+
+            if (button) {
+                button.classList.add('concluido');
+                button.innerHTML = '✓'; // Add checkmark when in concluido state
+                button.style.fontSize = '1.5rem';
+                button.style.fontWeight = 'bold';
+
+
+
+            }
+            const description = taskElement.querySelector('.task-description');
+            if (description) {
+                description.classList.add('text-taxado');
             }
         }
     })
+
     renderTasksProgressData(tasks)
 }

@@ -2,14 +2,15 @@ html {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    font-size: .63rem;
+    font-size: 10px;
     font-family: 'Rubik', sans-serif;
 }
 
 body {
     width: 100%;
     height: 100%;
-    background: linear-gradient(#41e5d9, #4d8fe2);
+   /*  background: linear-gradient(#41e5d9, #4d8fe2); */
+    background: #F5F9FF; 
     margin: 0;
     display: flex;
     justify-content: center;
@@ -17,9 +18,9 @@ body {
 }
 
 h1 {
-    width: 20,75rem;
-    height: 2,94;
-    font-size: 2,5rem;
+    width: 332px;
+    height: 47px;
+    font-size: 40px;
     margin: 0 0 1.6rem;
     color: #11175E;
 }
@@ -98,7 +99,7 @@ main {
     gap: 0.5rem;
 }
 
-.remove-task-btn {
+.concluir-btn {
     width: 6.2rem; 
     height: 2.2rem;
     color: #fff;
@@ -109,16 +110,30 @@ main {
     display: inline-block;
     vertical-align: middle;
     font-size: 1.4rem;
-    background-color: #0d58e3;
+    background-color: #2D70FD;
     position: relative;
     transition: all 0.3s ease;
 }
 
-.remove-task-btn:hover {
+.concluir-btn.concluido {
+    background-color: #4CAF50;
+    border: 2px solid #388E3C;
+}
+
+
+.concluir-btn.concluido {
+    background-color: #4CAF50;
+    border: 2px solid #388E3C;
+}
+
+
+
+
+.concluir-btn:hover {
     background-color: #0a45b0;
 }
 
-.remove-task-btn:active {
+.concluir-btn:active {
     transform: scale(0.95);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -145,18 +160,16 @@ main {
     width: 3.2rem;
     height: 3.2rem;
     position: relative;
-    text-indent: -9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #388E3C;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
-.concluido::after {
-    content: "✓";
-    color: white;
-    font-size: 2rem;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
 
 .text-taxado {
     text-decoration: line-through;
@@ -183,11 +196,11 @@ main {
 
 .add-task-btn {
     box-sizing: border-box;
-    width: 2,93rem;
-    height: 2,87;
+    width: 100px;
+    height: 46px;
     background: #2D70FD;
     border: 1px solid #2D70FD;
-    border-radius: 0,25rem;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     display: flex;
@@ -195,21 +208,22 @@ main {
     justify-content: center;
     padding: 0;
     position: relative;
+    font-size: 1.6rem;
 }
 
 .add-task-btn::before {
     content: "";
     position: absolute;
-    width: 1rem;
-    height: 0,12rem;
+    width: 16px;
+    height: 2px;
     background: white;
 }
 
 .add-task-btn::after {
     content: "";
     position: absolute;
-    width: 0,12rem;
-    height: 1rem;
+    width: 2px;
+    height: 16px;
     background: white;
 }
 

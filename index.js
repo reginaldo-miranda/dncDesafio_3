@@ -86,16 +86,35 @@ const createTaskListItem = (task) => {
     const descriptionElement = document.createElement('span');
     descriptionElement.className = 'task-description';
     descriptionElement.textContent = task.description;
-    toDo.appendChild(descriptionElement);
+    // Create container for description and etiqueta
+    const contentContainer = document.createElement('div');
+    contentContainer.style.display = 'flex';
+    contentContainer.style.flexDirection = 'column';
     
+    // Add description
+    contentContainer.appendChild(descriptionElement);
+    
+    // Add etiqueta if exists
     if (task.etiqueta) {
         const etiquetaElement = document.createElement('span');
         etiquetaElement.className = 'task-etiqueta';
         etiquetaElement.textContent = task.etiqueta;
-        toDo.appendChild(etiquetaElement);
+        contentContainer.appendChild(etiquetaElement);
+        
+        const dateElement = document.createElement('span');
+        const dateOnly = task.createdAt.split(',')[0]; // Remove the time part
+        dateElement.textContent = `Criado em: ${dateOnly}`;
+        dateElement.style.fontSize = '1.2rem';
+        dateElement.style.color = '#666';
+        dateElement.style.marginTop = '0.3rem';
+        contentContainer.appendChild(dateElement);
     }
 
+    // Add content container and button container to the task
+    toDo.appendChild(contentContainer);
     toDo.appendChild(buttonContainer);
+
+
     list.appendChild(toDo);
 
     return toDo;
